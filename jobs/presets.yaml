@@ -35,7 +35,7 @@ presets:
     mountPath: /status
   volumes:
   # The files in this repo update the respective configmaps
-  # via the config-updater plugin in plugins.yaml for hook
+  # via the config-updater plugin in plugins.yaml
   - name: docker-registry-config
     configMap:
       name: build-setup
