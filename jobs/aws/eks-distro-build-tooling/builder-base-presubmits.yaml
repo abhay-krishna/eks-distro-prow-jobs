@@ -23,12 +23,18 @@ presubmits:
     - org: abhay-krishna
       repo: eks-distro-prow-jobs
       base_ref: main
+    - org: abhay-krishna
+      repo: model-rocket-prow-jobs
+      base_ref: main
+      clone_uri: "git@github.com:abhay-krishna/modelrocket-prow-jobs.git"
     skip_report: false
     decoration_config:
       gcs_configuration:
         bucket: s3://prow-data-presubmits-devstack-prowbucket7c73355c-18d9rfyxzywso
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
+      ssh_key_secrets:
+      - ssh-secret
     labels:
       image-build: "true"
     spec:
