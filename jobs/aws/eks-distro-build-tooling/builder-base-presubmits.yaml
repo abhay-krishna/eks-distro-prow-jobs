@@ -24,7 +24,7 @@ presubmits:
       repo: eks-distro-prow-jobs
       base_ref: main
     - org: abhay-krishna
-      repo: model-rocket-prow-jobs
+      repo: modelrocket-prow-jobs
       base_ref: main
       clone_uri: "git@github.com:abhay-krishna/modelrocket-prow-jobs.git"
     skip_report: false
