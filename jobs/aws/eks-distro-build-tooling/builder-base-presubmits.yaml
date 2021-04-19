@@ -21,9 +21,6 @@ presubmits:
     cluster: "prow-presubmits-cluster"
     extra_refs:
     - org: abhay-krishna
-      repo: eks-distro-build-tooling
-      base_ref: main
-    - org: abhay-krishna
       repo: eks-distro-prow-jobs
       base_ref: main
     skip_report: false
