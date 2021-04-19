@@ -52,6 +52,13 @@ presubmits:
           make build -C builder-base DEVELOPMENT=false
           &&
           touch /status/done
+        volumeMounts:
+        - name: ssh-auth
+          mountPath: /secrets/ssh-secrets
+          readOnly: true
+        - name: github-auth
+          mountPath: /secrets/github-secrets
+          readOnly: true
         livenessProbe:
           exec:
             command:
@@ -72,6 +79,13 @@ presubmits:
         - sh
         args:
         - /script/entrypoint.sh
+        volumeMounts:
+        - name: ssh-auth
+          mountPath: /secrets/ssh-secrets
+          readOnly: true
+        - name: github-auth
+          mountPath: /secrets/github-secrets
+          readOnly: true
         livenessProbe:
           exec:
             command:
@@ -89,3 +103,12 @@ presubmits:
           limits:
             memory: "8Gi"
             cpu: "1536m"
+      volumes:
+      - name: ssh-auth
+        secret:
+          defaultMode: 256
+          secretName: pr-bot-ssh-secret
+      - name: github-auth
+        secret:
+          defaultMode: 256
+          secretName: pr-bot-github-token   
