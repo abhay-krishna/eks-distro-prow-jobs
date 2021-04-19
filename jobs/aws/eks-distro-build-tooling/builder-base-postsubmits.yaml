@@ -13,7 +13,7 @@
 # limitations under the License.
 
 postsubmits:
-  aws/eks-distro-build-tooling:
+  abhay-krishna/eks-distro-build-tooling:
   - name: builder-base-tooling-postsubmit
     always_run: false
     run_if_changed: "builder-base/.*"
@@ -22,16 +22,16 @@ postsubmits:
     branches:
     - ^main$
     extra_refs:
-    - org: eks-distro-pr-bot
+    - org: abhay-krishna
       repo: eks-distro-build-tooling
       base_ref: main
-    - org: eks-distro-pr-bot
+    - org: abhay-krishna
       repo: eks-distro-prow-jobs
       base_ref: main
     skip_report: false
     decoration_config:
       gcs_configuration:
-        bucket: s3://prowdataclusterstack-316434458-prowbucket7c73355c-1n9f9v93wpjcm
+        bucket: s3://prow-data-devstack-prowbucket7c73355c-lvevjzjksdgo
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
     labels:
@@ -42,9 +42,6 @@ postsubmits:
       containers:
       - name: build-container
         image: 137112412989.dkr.ecr.us-west-2.amazonaws.com/amazonlinux:2
-        env:
-        - name: IMAGE_REPO
-          value: "public.ecr.aws/h1r8a7l5"
         command:
         - bash
         - -c
